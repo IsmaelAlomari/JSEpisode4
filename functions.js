@@ -10,6 +10,7 @@ const books = require("./books.json");
  ****************************************************************/
 function getBookById(bookId, books) {
   // Your code goes here
+  return books.find(bookfound => bookfound.id === bookId)
 }
 // console.log(getBookById(12, books));
 
@@ -21,6 +22,7 @@ function getBookById(bookId, books) {
  * - returns undefined if no matching author is found
  ****************************************************************/
 function getAuthorByName(authorName, authors) {
+   return authors.find(author => authorName === author.name)
   // Your code goes here
 }
 // console.log(getAuthorByName("J.K. Rowling", authors));
@@ -32,6 +34,11 @@ function getAuthorByName(authorName, authors) {
  *    [{ author: <NAME>, bookCount: <NUMBER_OF_BOOKS> }]
  ****************************************************************/
 function bookCountsByAuthor(authors) {
+  let newAuthors = [];
+  authors.map(function (data) {
+    newAuthors.push({ author: data.name, bookCount: data.books.length });
+  });
+  return newAuthors;
   // Your code goes here
 }
 // console.log(bookCountsByAuthor(authors));
